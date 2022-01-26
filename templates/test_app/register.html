@@ -1,0 +1,18 @@
+{% extends 'test_app/index.html' %}
+
+
+{% block content %}
+    <h1 class="url">Регестрация</h1>
+    <br>
+    <br>
+    <div class="url">
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <br>
+            <button class="url">Зарегестрировать</button>
+        </form>
+    </div>
+{% endblock content %}
