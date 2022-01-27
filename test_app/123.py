@@ -5,12 +5,11 @@ s = pyshorteners.Shortener()
 print(s.tinyurl.short(link))
 
 
-def index_one(request):
-    auto = Car.objects.all()
-    form = GetPost()
-    if request.method == 'POST':
-        form = GetPost(request.POST)
-        if form.is_valid():
-            form.save()
-    context = {'auto': auto, 'menu': menu, 'form': form}
-    return render(request, 'one/index.html', context)
+# сохранение данных в бд
+def create(request):
+    if request.method == "POST":
+        tom = Person()
+        tom.name = request.POST.get("name")
+        tom.age = request.POST.get("age")
+        tom.save()
+    return HttpResponseRedirect("/")

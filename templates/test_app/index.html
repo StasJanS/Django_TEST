@@ -19,10 +19,11 @@
             <table>
                 {{ storm.as_table }}
             </table>
-        <button>Сгенерировать</button>
+        <button>Добавить урл</button>
         </form>
+        <button><a href="{% url 'generacion' %}">Генерация</a></button>
         <div class="title">Или просмотреть все свои сокращённые урлы:</div>
-        <a href="{% url 'all_short_url' %}"></a>
+        <a class="url" href="{% url 'all_short_url' %}">Перейти</a>
     {% else %}
         <h1 class="title">Выбери то, что тебе ближе?</h1>
         <br>
