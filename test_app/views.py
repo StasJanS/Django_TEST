@@ -10,11 +10,15 @@ def index(request):
     if request.method == 'POST':
         storm = UrlForm(request.POST)
         if storm.is_valid():
-            storm.save()
+            talk = pyshorteners.Shortener().tinyurl.short(storm.cleaned_data['url_name'])
+            stas = UrlUser.create(url_name=storm.cleaned_data['url_name'], short_url=talk, username=request.user)
+            stas.save()
+            # print(stas)
             redirect('all_short_url')
     else:
         storm = UrlForm()
-    context = {'storm': storm}
+        talk = ""
+    context = {'storm': storm, 'talk': talk}
 
     return render(request, 'test_app/index.html', context)
 
@@ -62,14 +66,18 @@ def del_file(request):
     return render(request, 'test_app/all_short_url.html', context)
 
 
-def generacion(request):
-    z = UrlUser.objects.all()
-    x = []
-    for i in range(len(z)):
-        s = pyshorteners.Shortener().tinyurl.short(z[i].url_name)
-        x.append(s)
-        print(s)
-    #    w = UrlUser.create(short_url=s)
-    stas = UrlUser.objects.all()
-    context = {'x': x, 'stas':stas}
-    return render(request, 'test_app/all_short_url.html', context)
+# def generacion(request):
+#     z = UrlUser.objects.all()
+#     x = []
+#     for i in range(len(z)):
+#         s = pyshorteners.Shortener().tinyurl.short(z[i].url_name)
+#         x.append(s)
+#         print(s)
+#         talk = UrlUser.create(s)
+#         talk.save()
+#         print(talk)
+#     #    w = UrlUser.create(short_url=s)
+#
+#     stas = UrlUser.objects.all()
+#     context = {'x': x, 'stas':stas}
+#     return render(request, 'test_app/all_short_url.html', context)

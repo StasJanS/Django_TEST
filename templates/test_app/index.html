@@ -14,14 +14,17 @@
             !<br>Ты всегда сможешь сделать:
         </div> <br><a class="url" href="{% url 'logout' %}">Выход</a>
         <div class="title">Cделать сокращённый урл:</div>
-        <form action="" method="post">
+        <form class="go" action="" method="post">
             {% csrf_token %}
             <table>
                 {{ storm.as_table }}
             </table>
-        <button>Добавить урл</button>
+        <button>Сократить и сохранить</button>
         </form>
-        <button><a href="{% url 'generacion' %}">Генерация</a></button>
+        <div class="go">{{ talk }}</div>
+
+
+{#        <button><a href="{% url 'generacion' %}">Генерация</a></button>#}
         <div class="title">Или просмотреть все свои сокращённые урлы:</div>
         <a class="url" href="{% url 'all_short_url' %}">Перейти</a>
     {% else %}

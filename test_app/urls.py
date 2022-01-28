@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from .views import index, user_login, user_logout, user_register, all_short_url, del_file, generacion
+from .views import index, user_login, user_logout, user_register, all_short_url, del_file
 
 urlpatterns = [
                   path('', index, name='index'),
@@ -11,5 +11,5 @@ urlpatterns = [
                   path('logout/', user_logout, name='logout'),
                   path('all_short_url/', all_short_url, name='all_short_url'),
                   path('del/', del_file, name='del_file'),
-                  path('gen/', generacion, name='generacion'),
+                  # path('gen/', generacion, name='generacion'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
