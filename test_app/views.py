@@ -15,6 +15,7 @@ def index(request):
     else:
         storm = UrlForm()
     context = {'storm': storm}
+
     return render(request, 'test_app/index.html', context)
 
 
@@ -63,8 +64,12 @@ def del_file(request):
 
 def generacion(request):
     z = UrlUser.objects.all()
+    x = []
     for i in range(len(z)):
         s = pyshorteners.Shortener().tinyurl.short(z[i].url_name)
-        print(s, sep="STAS")
+        x.append(s)
+        print(s)
     #    w = UrlUser.create(short_url=s)
-    return render(request, 'test_app/all_short_url.html')
+    stas = UrlUser.objects.all()
+    context = {'x': x, 'stas':stas}
+    return render(request, 'test_app/all_short_url.html', context)

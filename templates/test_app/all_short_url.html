@@ -8,7 +8,9 @@
             Длинный урл: {{ i.url_name }}<br>
             Короткий урл: {{ i.short_url }}</div>
         <hr>
-
+    {% endfor %}
+    {% for z in x %}
+        <p class="go">{{ z }}</p>
     {% endfor %}
     <button class="url"><a href="{% url 'del_file' %}">Очистить</a></button>
 {% endblock content %}
