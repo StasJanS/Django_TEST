@@ -11,5 +11,4 @@ urlpatterns = [
                   path('logout/', user_logout, name='logout'),
                   path('all_short_url/', all_short_url, name='all_short_url'),
                   path('del/', del_file, name='del_file'),
-                  # path('gen/', generacion, name='generacion'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

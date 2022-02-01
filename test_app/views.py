@@ -65,19 +65,3 @@ def del_file(request):
     context = {'del_z': del_z}
     return render(request, 'test_app/all_short_url.html', context)
 
-
-# def generacion(request):
-#     z = UrlUser.objects.all()
-#     x = []
-#     for i in range(len(z)):
-#         s = pyshorteners.Shortener().tinyurl.short(z[i].url_name)
-#         x.append(s)
-#         print(s)
-#         talk = UrlUser.create(s)
-#         talk.save()
-#         print(talk)
-#     #    w = UrlUser.create(short_url=s)
-#
-#     stas = UrlUser.objects.all()
-#     context = {'x': x, 'stas':stas}
-#     return render(request, 'test_app/all_short_url.html', context)

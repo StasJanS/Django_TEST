@@ -24,4 +24,4 @@ class UserRegisterForm(UserCreationForm):
 class UrlForm(forms.ModelForm):
     class Meta:
         model = UrlUser
-        fields = ['url_name', 'username']
+        fields = ['url_name']
