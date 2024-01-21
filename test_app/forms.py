@@ -18,10 +18,12 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ('username', 'email', 'password1', 'password2')
 
 
 class UrlForm(forms.ModelForm):
+    url_name = forms.URLField(label="Введите ссылку", widget=forms.widgets.URLInput())
+
     class Meta:
         model = UrlUser
-        fields = ['url_name']
+        fields = ('url_name',)

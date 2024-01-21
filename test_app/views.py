@@ -1,25 +1,22 @@
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 import pyshorteners as pyshorteners
-# Create your views here.
 from .forms import UserLoginForm, UserRegisterForm, UrlForm
 from .models import UrlUser
 
 
 def index(request):
+    talk = ""
     if request.method == 'POST':
-        storm = UrlForm(request.POST)
-        if storm.is_valid():
-            talk = pyshorteners.Shortener().tinyurl.short(storm.cleaned_data['url_name'])
-            stas = UrlUser.create(url_name=storm.cleaned_data['url_name'], short_url=talk, username=request.user)
-            stas.save()
-            # print(stas)
+        form = UrlForm(request.POST)
+        if form.is_valid():
+            talk = pyshorteners.Shortener().tinyurl.short(form.cleaned_data['url_name'])
+            obj_url = UrlUser.create(url_name=form.cleaned_data['url_name'], short_url=talk, username=request.user)
+            obj_url.save()
             redirect('all_short_url')
     else:
-        storm = UrlForm()
-        talk = ""
-    context = {'storm': storm, 'talk': talk}
-
+        form = UrlForm()
+    context = {'form': form, 'talk': talk}
     return render(request, 'test_app/index.html', context)
 
 
@@ -55,13 +52,11 @@ def user_logout(request):
 
 
 def all_short_url(request):
-    z = UrlUser.objects.filter(username=request.user)
-    context = {'z': z}
-    return render(request, 'test_app/all_short_url.html', context)
+    user_urls = UrlUser.objects.filter(username=request.user)
+    return render(request, 'test_app/all_short_url.html', {'user_urls': user_urls})
 
 
 def del_file(request):
-    del_z = UrlUser.objects.filter(username=request.user).delete()
-    context = {'del_z': del_z}
-    return render(request, 'test_app/all_short_url.html', context)
+    UrlUser.objects.filter(username=request.user).delete()
+    return render(request, 'test_app/all_short_url.html')
 

@@ -2,17 +2,15 @@
 
 
 {% block content %}
+    <a style="font-size: 30px" href="{% url 'index' %}">Главная</a>
     <h1 class="url">Вход</h1>
-    <br>
-    <br>
     <div class="url">
         <form method="post">
             {% csrf_token %}
             <table>
                 {{ form.as_table }}
             </table>
-            <br>
-            <button class="url">Вход</button>
+            <button class="btnSave">Вход</button>
         </form>
     </div>
 {% endblock content %}

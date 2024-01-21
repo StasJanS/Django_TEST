@@ -9,5 +9,5 @@ class UrlUser(models.Model):
 
     @classmethod
     def create(cls, url_name, short_url, username):
-        stas = cls(url_name=url_name, short_url=short_url, username=username)
-        return stas
+        obj = cls(url_name=url_name, short_url=short_url, username=username)
+        return obj

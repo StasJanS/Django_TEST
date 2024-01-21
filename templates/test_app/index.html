@@ -9,24 +9,23 @@
 <body style="background-image:url({% static 'img/2.jpg' %});background-size: 100%;">
 {% block content %}
     {% if request.user.is_authenticated %}
-        <div class="title">Рады, что ты с нами &nbsp
-            <div class="name"> {{ user.username }}</div>
-            !<br>Ты всегда сможешь сделать:
-        </div> <br><a class="url" href="{% url 'logout' %}">Выход</a>
-        <div class="title">Cделать сокращённый урл:</div>
+        <a class="logout" href="{% url 'logout' %}">Выход</a>
+        <div class="title">Рады, что ты с нами &nbsp;<span class="name">{{ user.username }}</span>!</div>
+
+        <div class="title" style="margin-top: 60px">Ты всегда сможешь:</div>
+
+        <div class="title_par">Сократить ссылку</div>
+        <br>
         <form class="go" action="" method="post">
             {% csrf_token %}
-            <table>
-                {{ storm.as_table }}
-            </table>
-        <button>Сократить и сохранить</button>
+            {{ form.as_table }}
+            <button class="btnSave">Сократить и сохранить</button>
         </form>
-        <div class="go">{{ talk }}</div>
+         <div class="go">Короткая ссылка:<span class="shortUrl">{{ talk }}</span></div>
 
-
-{#        <button><a href="{% url 'generacion' %}">Генерация</a></button>#}
-        <div class="title">Или просмотреть все свои сокращённые урлы:</div>
-        <a class="url" href="{% url 'all_short_url' %}">Перейти</a>
+        <div class="title_par" style="display: flex">Просмотреть все свои сокращённые ссылки &rarr;&nbsp;<a class="url2"
+                                                                                                          href="{% url 'all_short_url' %}">Перейти</a>
+        </div>
     {% else %}
         <h1 class="title">Выбери то, что тебе ближе?</h1>
         <br>
@@ -35,5 +34,6 @@
 {% endblock content %}
 </body>
 </html>
+
 
 

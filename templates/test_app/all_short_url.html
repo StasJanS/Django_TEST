@@ -3,14 +3,10 @@
 
 {% block content %}
     <a class="url" href="{% url 'index' %}">Главная</a>
-    {% for i in z %}
-        <div class="go">
-            Длинный урл: {{ i.url_name }}<br>
-            Короткий урл: {{ i.short_url }}</div>
+    {% for url in user_urls %}
+        <div class="title_par">Длинный урл: <span class="go">{{ url.url_name }}</span></div>
+        <div class="title_par">Короткий урл: <span class="go">{{ url.short_url }}</span></div>
         <hr>
     {% endfor %}
-    {% for z in x %}
-        <p class="go">{{ z }}</p>
-    {% endfor %}
-    <button class="url"><a href="{% url 'del_file' %}">Очистить</a></button>
+    <button class="btnSave"><a href="{% url 'del_file' %}">Очистить</a></button>
 {% endblock content %}

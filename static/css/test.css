@@ -5,13 +5,29 @@
     color: blanchedalmond;
     font-size: 70px;
     font-weight: 700;
-
 }
+.title_par {
+    margin: 20px;
+    font-family: "Monotype Corsiva";
+    color: #dbe773;
+    font-size: 50px;
+    font-weight: 700;
+}
+
 .go {
+    margin: 20px;
     font-family: "Monotype Corsiva";
     color: #fffdfd;
     font-size: 30px;
 }
+
+.shortUrl {
+    margin: 20px;
+    font-family: "Monotype Corsiva";
+    color: #84bae1;
+    font-size: 30px;
+}
+
 
 .name {
     font-family: "Monotype Corsiva";
@@ -19,12 +35,27 @@
     font-size: 70px;
     font-weight: 700;
 }
+
 .url {
     display: flex;
     justify-content: center;
     font-family: "Comic Sans MS";
     color: #11d2a4;
     font-size: 60px;
+    font-weight: 700;
+}
+
+.url2 {
+    color: #11d2a4;
+    font-weight: 700;
+}
+
+.logout {
+    display: flex;
+    justify-content: end;
+    font-family: "Comic Sans MS";
+    color: #b02af3;
+    font-size: 30px;
     font-weight: 700;
 }
 a:link {
@@ -38,4 +69,12 @@ a:hover {
 }
 a:active {
     color: #8c1616;
+}
+
+.btnSave {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    color: blueviolet;
+    margin-top: 20px;
 }
